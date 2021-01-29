@@ -1,0 +1,47 @@
+{
+    "title": "turbo-tunnel使用文档",
+    "description": "turbo-tunnel使用文档",
+    "author": "drunkdream",
+    "language": "zh-hans",
+    "links": {
+        "sidebar": {
+            "Home": "/"
+        }
+    },
+    "plugins": [
+        "-search",
+        "-lunr",
+        "search-pro",
+        "splitter",
+        "expandable-chapters",
+        "anchor-navigation-ex",
+        "tbfed-pagefooter",
+        "include-codeblock",
+        "scripts"
+    ],
+    "pluginsConfig": {
+        "search-pro": {
+            "cutWordLib": "nodejieba",
+            "defineWord" : [""]
+        },
+        "anchor-navigation-ex": {
+            "multipleH1": false
+        },
+        "tbfed-pagefooter": {
+            "copyright":"ttun.top 版权所有 ",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "scripts": {
+            "files": [
+            ]
+        }
+    },
+    "styles": {
+        "website": "styles/website.css",
+        "ebook": "styles/ebook.css",
+        "pdf": "styles/pdf.css",
+        "mobi": "styles/mobi.css",
+        "epub": "styles/epub.css"
+    }
+}
