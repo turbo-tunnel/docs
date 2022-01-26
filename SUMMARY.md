@@ -7,4 +7,6 @@
 * [WebSocket隧道](./websocket.md)
 * [Socks代理隧道](./socks.md)
 * [嵌套隧道](./nested_tunnel.md)
+* [透明代理](./transparent_proxy.md)
 * [配置文件](./config.md)
+* [扩展插件](./plugin.md)
