@@ -34,4 +34,12 @@ $ turbo-tunnel -l http://:8080/ -t ssh://1.1.1.1:2222/?private_key=/path/to/priv
 
 该命令会创建一个HTTPS代理服务端，并通过SSH服务端`1.1.1.1:2222`转发所有流量。这里的`private_key`表示使用公私钥方式进行鉴权时的私钥路径。
 
-> 这里的SSH服务端需要开启`端口转发`能力，目前暂不支持未开启端口转发的SSH服务端。
+> 这里的SSH服务端需要开启`端口转发`能力，如果未开启端口转发，可以使用以下方法。
+
+## 通过进程进行端口转发的SSH隧道客户端
+
+```bash
+$ turbo-tunnel -l http://:8080/ -t ssh+process://root:password@1.1.1.1:2222/usr/local/bin/go-telnet
+```
+
+`/usr/local/bin/go-telnet`是用于进行端口转发的程序路径（需要提前拷贝到ssh服务器上并设置好可执行权限），源码地址为：[https://github.com/turbo-tunnel/telnet-go](https://github.com/turbo-tunnel/telnet-go)。其基本原理是将进程的`stdin`和`stdout`转换为socket的读写操作，从而实现了端口转发。
