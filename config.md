@@ -11,7 +11,14 @@
 ```yaml
 version: 1.0 # yaml文件版本，暂时没有用到，留作升级使用
 
-listen: http://127.0.0.1:6666 # 配置监听地址
+listen: 
+  - http://127.0.0.1:6666 # 配置监听地址
+  - socks5://127.0.0.1:7777 # 支持监听多个地址
+
+hosts:
+  - domain: mytest.com # 支持配置hosts
+    ip: 1.2.3.4
+
 plugins:
   - relay_tunnel # 指定用到的插件
 

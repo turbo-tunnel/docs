@@ -23,3 +23,15 @@ $ turbo-tunnel -l http://:8080/ -t socks4://userid@127.0.0.1:1080
 ```
 
 该命令会创建一个HTTPS代理服务端，并通过Socks4代理隧道转发所有流量。
+
+## Socks5代理隧道服务端
+
+```bash
+$ turbo-tunnel -l socks5://username:password@127.0.0.1:1080
+```
+
+## Socks5代理客隧道客户端
+
+```bash
+$ turbo-tunnel -l http://:8080/ -t socks5://username:password@127.0.0.1:1080
+```
