@@ -1,443 +1,89 @@
-
-<!DOCTYPE HTML>
-<html lang="zh-hans" >
-    <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>配置文件 · turbo-tunnel使用文档</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="drunkdream">
-        
-        
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用配置文件 | Turbo Tunnel</title>
+    <meta name="generator" content="VuePress 1.9.7">
     
-    <link rel="stylesheet" href="gitbook/style.css">
-
+    <meta name="description" content="🚀 Fast tcp/https/websocket/socks4/socks5/ssh/icmp/k8s tunnel serving as unified proxy server.">
     
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-pro/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-        
+    <link rel="preload" href="/assets/css/0.styles.6e9b5180.css" as="style"><link rel="preload" href="/assets/js/app.660469c7.js" as="script"><link rel="preload" href="/assets/js/3.d1257bb8.js" as="script"><link rel="preload" href="/assets/js/2.9a7e09b6.js" as="script"><link rel="preload" href="/assets/js/10.a2fc730d.js" as="script"><link rel="prefetch" href="/assets/js/11.49889ae0.js"><link rel="prefetch" href="/assets/js/12.b606b4cf.js"><link rel="prefetch" href="/assets/js/13.c2e97671.js"><link rel="prefetch" href="/assets/js/14.51694c88.js"><link rel="prefetch" href="/assets/js/15.535fb27a.js"><link rel="prefetch" href="/assets/js/16.f4e1bf86.js"><link rel="prefetch" href="/assets/js/17.2f9d6162.js"><link rel="prefetch" href="/assets/js/18.ff7b6a9c.js"><link rel="prefetch" href="/assets/js/4.3061709e.js"><link rel="prefetch" href="/assets/js/5.2898148b.js"><link rel="prefetch" href="/assets/js/6.ef29ee56.js"><link rel="prefetch" href="/assets/js/7.1ede4d9b.js"><link rel="prefetch" href="/assets/js/8.58f98b72.js"><link rel="prefetch" href="/assets/js/9.0c5da88e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.6e9b5180.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-5fd5e854><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Turbo Tunnel</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/drunkdream/turbo-tunnel" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/drunkdream/turbo-tunnel" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">使用说明</a></li><li><a href="/port_forward.html" class="sidebar-link">端口转发</a></li><li><a href="/https.html" class="sidebar-link">HTTPS代理隧道</a></li><li><a href="/socks.html" class="sidebar-link">Socks代理隧道</a></li><li><a href="/websocket.html" class="sidebar-link">WebSocket隧道</a></li><li><a href="/ssh.html" class="sidebar-link">SSH隧道</a></li><li><a href="/nested_tunnel.html" class="sidebar-link">嵌套隧道</a></li><li><a href="/config.html" aria-current="page" class="active sidebar-link">配置文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/config.html#配置文件可以做什么" class="sidebar-link">配置文件可以做什么</a></li><li class="sidebar-sub-header"><a href="/config.html#编写配置文件" class="sidebar-link">编写配置文件</a></li></ul></li><li><a href="/transparent_proxy.html" class="sidebar-link">透明代理</a></li><li><a href="/plugin.html" class="sidebar-link">扩展插件</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用配置文件"><a href="#使用配置文件" class="header-anchor">#</a> 使用配置文件</h1> <h2 id="配置文件可以做什么"><a href="#配置文件可以做什么" class="header-anchor">#</a> 配置文件可以做什么</h2> <p>配置文件可以简化命令行参数，允许配置多个隧道和路由规则，从而根据不同请求匹配不同的路由。</p> <h2 id="编写配置文件"><a href="#编写配置文件" class="header-anchor">#</a> 编写配置文件</h2> <p>配置文件使用<code>yaml</code>语法，基本格式如下：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">1.0</span> <span class="token comment"># yaml文件版本，暂时没有用到，留作升级使用</span>
 
-    
+<span class="token key atrule">listen</span><span class="token punctuation">:</span> 
+  <span class="token punctuation">-</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">6666</span> <span class="token comment"># 配置监听地址</span>
+  <span class="token punctuation">-</span> socks5<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">7777</span> <span class="token comment"># 支持监听多个地址</span>
 
-    
-        
-        <link rel="stylesheet" href="styles/website.css">
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
+<span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">domain</span><span class="token punctuation">:</span> mytest.com <span class="token comment"># 支持配置hosts</span>
+    <span class="token key atrule">ip</span><span class="token punctuation">:</span> 1.2.3.4
 
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+<span class="token key atrule">plugins</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> relay_tunnel <span class="token comment"># 指定用到的插件</span>
 
-    
-    <link rel="next" href="plugin.html" />
-    
-    
-    <link rel="prev" href="transparent_proxy.html" />
-    
+<span class="token key atrule">tunnels</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> direct
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>//
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># 默认使用直连策略</span>
+  
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> block
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> block<span class="token punctuation">:</span>// <span class="token comment"># 禁止访问策略</span>
 
-    </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="输入并搜索" />
-</div>
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> web
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//web<span class="token punctuation">-</span>proxy.com<span class="token punctuation">:</span><span class="token number">8080</span>
+  
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> private
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> wss<span class="token punctuation">:</span>//test<span class="token punctuation">:</span>mypassword@ws<span class="token punctuation">-</span>proxy.com/proxy/<span class="token punctuation">{</span>addr<span class="token punctuation">}</span>/<span class="token punctuation">{</span>port<span class="token punctuation">}</span>
+    <span class="token key atrule">dependency</span><span class="token punctuation">:</span> web <span class="token comment"># 配置隧道依赖关系</span>
 
-            
-                <nav role="navigation">
-                
+<span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> local
+    <span class="token key atrule">priority</span><span class="token punctuation">:</span> <span class="token number">100</span> <span class="token comment"># 优先级，1-100，策略冲突时会选择优先级最高的策略</span>
+    <span class="token key atrule">addr</span><span class="token punctuation">:</span> 127.0.0.1
+    <span class="token key atrule">tunnel</span><span class="token punctuation">:</span> direct
+  
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> internal
+    <span class="token key atrule">priority</span><span class="token punctuation">:</span> <span class="token number">99</span>
+    <span class="token key atrule">addr</span><span class="token punctuation">:</span> <span class="token string">&quot;192.168.*&quot;</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> 1<span class="token punctuation">-</span><span class="token number">65535</span>
+    <span class="token key atrule">tunnel</span><span class="token punctuation">:</span> direct
+  
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> public
+    <span class="token key atrule">priority</span><span class="token punctuation">:</span> <span class="token number">90</span>
+    <span class="token key atrule">addr</span><span class="token punctuation">:</span> <span class="token string">&quot;*&quot;</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> 80;443;8080
+    <span class="token key atrule">tunnel</span><span class="token punctuation">:</span> web <span class="token comment"># 访问外网使用`web`隧道</span>
+  
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> private
+    <span class="token key atrule">priority</span><span class="token punctuation">:</span> <span class="token number">95</span>
+    <span class="token key atrule">addr</span><span class="token punctuation">:</span> <span class="token string">&quot;*.private.com&quot;</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> 1<span class="token punctuation">-</span><span class="token number">65535</span>
+    <span class="token key atrule">tunnel</span><span class="token punctuation">:</span> private
 
-
-<ul class="summary">
-    
-    
-    
-        
-        <li>
-            <a href="/" target="_blank" class="custom-link">Home</a>
-        </li>
-    
-    
-
-    
-    <li class="divider"></li>
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    使用说明
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="port_forward.html">
-            
-                <a href="port_forward.html">
-            
-                    
-                    端口转发
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="https.html">
-            
-                <a href="https.html">
-            
-                    
-                    HTTPS代理隧道
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="ssh.html">
-            
-                <a href="ssh.html">
-            
-                    
-                    SSH隧道
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="websocket.html">
-            
-                <a href="websocket.html">
-            
-                    
-                    WebSocket隧道
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="socks.html">
-            
-                <a href="socks.html">
-            
-                    
-                    Socks代理隧道
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="nested_tunnel.html">
-            
-                <a href="nested_tunnel.html">
-            
-                    
-                    嵌套隧道
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="transparent_proxy.html">
-            
-                <a href="transparent_proxy.html">
-            
-                    
-                    透明代理
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.9" data-path="config.html">
-            
-                <a href="config.html">
-            
-                    
-                    配置文件
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.10" data-path="plugin.html">
-            
-                <a href="plugin.html">
-            
-                    
-                    扩展插件
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >配置文件</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><b> </b>&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</a></li><ul><li><span class="title-icon "></span><a href="#&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x505A;&#x4EC0;&#x4E48;"><b>1. </b>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x505A;&#x4EC0;&#x4E48;</a></li><li><span class="title-icon "></span><a href="#&#x7F16;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><b>2. </b>&#x7F16;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</a></li></ul></ul></div><a href="#&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a name="&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a> &#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h1>
-<h2 id="&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x505A;&#x4EC0;&#x4E48;"><a name="&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x505A;&#x4EC0;&#x4E48;" class="anchor-navigation-ex-anchor" href="#&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x505A;&#x4EC0;&#x4E48;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x505A;&#x4EC0;&#x4E48;</h2>
-<p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#xFF0C;&#x5141;&#x8BB8;&#x914D;&#x7F6E;&#x591A;&#x4E2A;&#x96A7;&#x9053;&#x548C;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#xFF0C;&#x4ECE;&#x800C;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x8BF7;&#x6C42;&#x5339;&#x914D;&#x4E0D;&#x540C;&#x7684;&#x8DEF;&#x7531;&#x3002;</p>
-<h2 id="&#x7F16;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a name="&#x7F16;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x7F16;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x7F16;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2>
-<p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4F7F;&#x7528;<code>yaml</code>&#x8BED;&#x6CD5;&#xFF0C;&#x57FA;&#x672C;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">1.0</span> <span class="hljs-comment"># yaml&#x6587;&#x4EF6;&#x7248;&#x672C;&#xFF0C;&#x6682;&#x65F6;&#x6CA1;&#x6709;&#x7528;&#x5230;&#xFF0C;&#x7559;&#x4F5C;&#x5347;&#x7EA7;&#x4F7F;&#x7528;</span>
-
-<span class="hljs-attr">listen:</span> 
-<span class="hljs-attr">  - http:</span>//<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6666</span> <span class="hljs-comment"># &#x914D;&#x7F6E;&#x76D1;&#x542C;&#x5730;&#x5740;</span>
-<span class="hljs-attr">  - socks5:</span>//<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">7777</span> <span class="hljs-comment"># &#x652F;&#x6301;&#x76D1;&#x542C;&#x591A;&#x4E2A;&#x5730;&#x5740;</span>
-
-<span class="hljs-attr">hosts:</span>
-<span class="hljs-attr">  - domain:</span> mytest.com <span class="hljs-comment"># &#x652F;&#x6301;&#x914D;&#x7F6E;hosts</span>
-<span class="hljs-attr">    ip:</span> <span class="hljs-number">1.2</span><span class="hljs-number">.3</span><span class="hljs-number">.4</span>
-
-<span class="hljs-attr">plugins:</span>
-<span class="hljs-bullet">  -</span> relay_tunnel <span class="hljs-comment"># &#x6307;&#x5B9A;&#x7528;&#x5230;&#x7684;&#x63D2;&#x4EF6;</span>
-
-<span class="hljs-attr">tunnels:</span>
-<span class="hljs-attr">  - id:</span> direct
-<span class="hljs-attr">    url:</span> tcp://
-<span class="hljs-attr">    default:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># &#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x76F4;&#x8FDE;&#x7B56;&#x7565;</span>
-
-<span class="hljs-attr">  - id:</span> block
-<span class="hljs-attr">    url:</span> block:// <span class="hljs-comment"># &#x7981;&#x6B62;&#x8BBF;&#x95EE;&#x7B56;&#x7565;</span>
-
-<span class="hljs-attr">  - id:</span> web
-<span class="hljs-attr">    url:</span> http://web-proxy.com:<span class="hljs-number">8080</span>
-
-<span class="hljs-attr">  - id:</span> private
-<span class="hljs-attr">    url:</span> wss://test:mypassword@ws-proxy.com/proxy/{addr}/{port}
-<span class="hljs-attr">    dependency:</span> web <span class="hljs-comment"># &#x914D;&#x7F6E;&#x96A7;&#x9053;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;</span>
-
-<span class="hljs-attr">rules:</span>
-<span class="hljs-attr">  - id:</span> local
-<span class="hljs-attr">    priority:</span> <span class="hljs-number">100</span> <span class="hljs-comment"># &#x4F18;&#x5148;&#x7EA7;&#xFF0C;1-100&#xFF0C;&#x7B56;&#x7565;&#x51B2;&#x7A81;&#x65F6;&#x4F1A;&#x9009;&#x62E9;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x9AD8;&#x7684;&#x7B56;&#x7565;</span>
-<span class="hljs-attr">    addr:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
-<span class="hljs-attr">    tunnel:</span> direct
-
-<span class="hljs-attr">  - id:</span> internal
-<span class="hljs-attr">    priority:</span> <span class="hljs-number">99</span>
-<span class="hljs-attr">    addr:</span> <span class="hljs-string">&quot;192.168.*&quot;</span>
-<span class="hljs-attr">    port:</span> <span class="hljs-number">1</span><span class="hljs-bullet">-65535</span>
-<span class="hljs-attr">    tunnel:</span> direct
-
-<span class="hljs-attr">  - id:</span> public
-<span class="hljs-attr">    priority:</span> <span class="hljs-number">90</span>
-<span class="hljs-attr">    addr:</span> <span class="hljs-string">&quot;*&quot;</span>
-<span class="hljs-attr">    port:</span> <span class="hljs-number">80</span>;<span class="hljs-number">443</span>;<span class="hljs-number">8080</span>
-<span class="hljs-attr">    tunnel:</span> web <span class="hljs-comment"># &#x8BBF;&#x95EE;&#x5916;&#x7F51;&#x4F7F;&#x7528;`web`&#x96A7;&#x9053;</span>
-
-<span class="hljs-attr">  - id:</span> private
-<span class="hljs-attr">    priority:</span> <span class="hljs-number">95</span>
-<span class="hljs-attr">    addr:</span> <span class="hljs-string">&quot;*.private.com&quot;</span>
-<span class="hljs-attr">    port:</span> <span class="hljs-number">1</span><span class="hljs-bullet">-65535</span>
-<span class="hljs-attr">    tunnel:</span> private
-
-<span class="hljs-attr">  - id:</span> test
-<span class="hljs-attr">    priority:</span> <span class="hljs-number">90</span>
-<span class="hljs-attr">    addr:</span> <span class="hljs-string">&quot;*.baidu.com&quot;</span>
-<span class="hljs-attr">    port:</span> <span class="hljs-number">80</span>;<span class="hljs-number">443</span>
-<span class="hljs-attr">    tunnel:</span> block <span class="hljs-comment"># &#x4E0D;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;</span>
-</code></pre>
-<pre><code class="lang-bash">$ turbo-tunnel -c tunnel.yml
-</code></pre>
-<p>&#x4F7F;&#x7528;<code>-c/--config</code>&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
-<footer class="page-footer"><span class="copyright">ttun.top &#x7248;&#x6743;&#x6240;&#x6709;  all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2022-01-26 12:53:03
-</span></footer>
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
-                    </div>
-                
-            </div>
-
-            
-                
-                <a href="transparent_proxy.html" class="navigation navigation-prev " aria-label="Previous page: 透明代理">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="plugin.html" class="navigation navigation-next " aria-label="Next page: 扩展插件">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"配置文件","level":"1.9","depth":1,"next":{"title":"扩展插件","level":"1.10","depth":1,"path":"plugin.md","ref":"./plugin.md","articles":[]},"previous":{"title":"透明代理","level":"1.8","depth":1,"path":"transparent_proxy.md","ref":"./transparent_proxy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","search-pro","splitter","expandable-chapters","anchor-navigation-ex","tbfed-pagefooter","include-codeblock","scripts","livereload"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"ttun.top 版权所有 ","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"livereload":{},"splitter":{},"scripts":{"files":[]},"search-pro":{"cutWordLib":"nodejieba","defineWord":[""]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":false,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"drunkdream","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"turbo-tunnel使用文档","language":"zh-hans","links":{"sidebar":{"Home":"/"}},"gitbook":"*","description":"turbo-tunnel使用文档"},"file":{"path":"config.md","mtime":"2022-01-26T04:53:03.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-26T11:16:44.625Z"},"basePath":".","book":{"language":""}});
-        });
-    </script>
-</div>
-
-        
-    <script src="gitbook/gitbook.js"></script>
-    <script src="gitbook/theme.js"></script>
-    
-        
-        <script src="gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-
-    </body>
+  <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> test
+    <span class="token key atrule">priority</span><span class="token punctuation">:</span> <span class="token number">90</span>
+    <span class="token key atrule">addr</span><span class="token punctuation">:</span> <span class="token string">&quot;*.baidu.com&quot;</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> 80;443
+    <span class="token key atrule">tunnel</span><span class="token punctuation">:</span> block <span class="token comment"># 不允许访问</span>
+</code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code>$ turbo-tunnel -c tunnel.yml
+</code></pre></div><p>使用<code>-c/--config</code>参数可以指定配置文件。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/turbo-tunnel/docs/edit/master/config.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">6/21/2022, 8:04:22 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/nested_tunnel.html" class="prev">
+        嵌套隧道
+      </a></span> <span class="next"><a href="/transparent_proxy.html">
+        透明代理
+      </a>
+      →
+    </span></p></div> <div class="copyright" data-v-5fd5e854>
+      Copyright © 2020 - 2022 ❤️ <a href="https://www.drunkdream.com/" target="_blank" data-v-5fd5e854>drunkdream</a></div></main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.660469c7.js" defer></script><script src="/assets/js/3.d1257bb8.js" defer></script><script src="/assets/js/2.9a7e09b6.js" defer></script><script src="/assets/js/10.a2fc730d.js" defer></script>
+  </body>
 </html>
-
