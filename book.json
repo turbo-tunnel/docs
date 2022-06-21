@@ -3,9 +3,10 @@
     "description": "turbo-tunnel使用文档",
     "author": "drunkdream",
     "language": "zh-hans",
+    "root": "./docs",
     "links": {
         "sidebar": {
-            "Home": "/"
+            "Home": "https://github.com/drunkdream/turbo-tunnel"
         }
     },
     "plugins": [
@@ -28,7 +29,7 @@
             "multipleH1": false
         },
         "tbfed-pagefooter": {
-            "copyright":"ttun.top 版权所有 ",
+            "copyright":"Copyright © 2020 - 2022 ❤️ drunkdream",
             "modify_label": "该文件修订时间：",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
