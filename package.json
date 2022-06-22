@@ -1,0 +1,17 @@
+{
+  "name": "turbo-tunnel-docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/turbo-tunnel/docs.git",
+  "author": "drunkdream <drunkdream@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2",
+    "vuepress": "^1.9.7",
+    "vuepress-plugin-nuggets-style-copy": "^1.0.3"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
