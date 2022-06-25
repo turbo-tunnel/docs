@@ -30,9 +30,9 @@ jobs:
         git branch
         git fetch origin publish
         git checkout publish
-        rm -rf assets/ *.html
-        ls -la
+        rm -rf assets/ yarn.lock *.html
         cp -pr $temp_dir/* .
+        ls -la
         git config --global user.name "github-bot"
         git config --global user.email "github-bot@drunkdream.com"
         git add .
