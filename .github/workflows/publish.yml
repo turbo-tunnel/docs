@@ -28,9 +28,10 @@ jobs:
         rm -rf $temp_dir
         mv docs/.vuepress/dist $temp_dir
         git branch
-        git pull origin master
+        git fetch origin publish
         git checkout publish
         rm -rf assets/ *.html
+        ls -la
         cp -pr $temp_dir/* .
         git config --global user.name "github-bot"
         git config --global user.email "github-bot@drunkdream.com"
