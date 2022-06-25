@@ -4,10 +4,6 @@
 name: Build & Upload html files
 
 on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
   release:
     types: [created]
 
@@ -31,6 +27,7 @@ jobs:
         export temp_dir=/tmp/turbo-tunnel-docs
         rm -rf $temp_dir
         mv docs/.vuepress/dist $temp_dir
+        git pull
         git checkout publish
         rm -rf assets/ *.html
         cp -pr $temp_dir/* .
