@@ -1,0 +1,41 @@
+# This workflows will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+name: Build & Upload html files
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up node 12
+      uses: actions/setup-node@v3
+      with:
+        node-version: 12
+    - name: Install dependencies
+      run: |
+        yarn
+    - name: Build and publish
+      run: |
+        yarn docs:build
+        export temp_dir=/tmp/turbo-tunnel-docs
+        rm -rf $temp_dir
+        mv docs/.vuepress/dist $temp_dir
+        git checkout publish
+        rm -rf assets/ *.html
+        cp -pr $temp_dir/* .
+        git config --global user.name "github-bot"
+        git config --global user.email "github-bot@drunkdream.com"
+        git add .
+        git commit . -m Update
+        git push -f
