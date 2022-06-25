@@ -27,7 +27,8 @@ jobs:
         export temp_dir=/tmp/turbo-tunnel-docs
         rm -rf $temp_dir
         mv docs/.vuepress/dist $temp_dir
-        git pull
+        git branch
+        git pull origin master
         git checkout publish
         rm -rf assets/ *.html
         cp -pr $temp_dir/* .
