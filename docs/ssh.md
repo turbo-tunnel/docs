@@ -39,7 +39,7 @@ $ turbo-tunnel -l http://:8080/ -t ssh://1.1.1.1:2222/?private_key=/path/to/priv
 ## 通过进程进行端口转发的SSH隧道客户端
 
 ```bash
-$ turbo-tunnel -l http://:8080/ -t ssh+process://root:password@1.1.1.1:2222/usr/local/bin/go-telnet
+$ turbo-tunnel -l http://:8080/ -t ssh+process://root:password@1.1.1.1:2222/usr/local/bin/telnet
 ```
 
-`/usr/local/bin/go-telnet`是用于进行端口转发的程序路径（需要提前拷贝到ssh服务器上并设置好可执行权限），源码地址为：[https://github.com/turbo-tunnel/telnet-go](https://github.com/turbo-tunnel/telnet-go)。其基本原理是将进程的`stdin`和`stdout`转换为socket的读写操作，从而实现了端口转发。
+`/usr/local/bin/telnet`是用于进行端口转发的程序路径（需要提前拷贝到ssh服务器上并设置好可执行权限），源码地址为：[https://github.com/turbo-tunnel/telnet-go](https://github.com/turbo-tunnel/telnet-go)。其基本原理是将进程的`stdin`和`stdout`转换为socket的读写操作，从而实现了端口转发。
