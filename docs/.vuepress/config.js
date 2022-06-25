@@ -2,6 +2,7 @@
 module.exports = {
   title: 'Turbo Tunnel',
   description: '🚀 Fast tcp/https/websocket/socks4/socks5/ssh/icmp/k8s tunnel serving as unified proxy server.',
+  patterns: ['*.md', '!SUMMARY.md'],
   themeConfig: {
     repo: 'https://github.com/drunkdream/turbo-tunnel',
     docsRepo: 'https://github.com/turbo-tunnel/docs',
