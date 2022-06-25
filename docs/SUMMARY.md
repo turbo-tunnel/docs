@@ -6,6 +6,8 @@
 * [SSH隧道](./ssh.md)
 * [WebSocket隧道](./websocket.md)
 * [Socks代理隧道](./socks.md)
+* [ICMP隧道](./icmp.md)
+* [K8S隧道](./k8s.md)
 * [嵌套隧道](./nested_tunnel.md)
 * [透明代理](./transparent_proxy.md)
 * [配置文件](./config.md)

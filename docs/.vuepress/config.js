@@ -15,6 +15,8 @@ module.exports = {
       ['/socks', 'Socks代理隧道'],
       ['/websocket', 'WebSocket隧道'],
       ['/ssh', 'SSH隧道'],
+      ['/icmp', 'ICMP隧道'],
+      ['/k8s', 'K8S隧道'],
       ['/nested_tunnel', '嵌套隧道'],
       ['/config', '配置文件'],
       ['/transparent_proxy', '透明代理'],
