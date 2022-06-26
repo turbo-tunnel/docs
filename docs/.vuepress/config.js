@@ -23,6 +23,16 @@ module.exports = {
       ['/plugin', '扩展插件']
     ]
   },
+  head:[[ 'script', {}, `
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6561463a45403780bdaed0b365f935a4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    `
+  ]],
   plugins: [
     ["vuepress-plugin-nuggets-style-copy", {
       copyText: "复制代码",
