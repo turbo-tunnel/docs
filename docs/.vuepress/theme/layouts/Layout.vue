@@ -4,6 +4,7 @@
     <template #sidebar-bottom> </template>
     <template #page-top> </template>
     <template #page-bottom>
+      <Comment></Comment>
       <div class="copyright">
         Copyright © 2020 - 2022 ❤️ <a href="https://www.drunkdream.com/" target="_blank">drunkdream</a>
       </div>
@@ -13,11 +14,13 @@
 
 <script>
 import ParentLayout from "@parent-theme/layouts/Layout.vue";
+import Comment from './Comment.vue'
 
 export default {
   name: "Layout",
   components: {
     ParentLayout,
+    Comment
   },
 };
 </script>
