@@ -6,15 +6,13 @@
   "author": "drunkdream <drunkdream@qq.com>",
   "license": "MIT",
   "devDependencies": {
+    "gitalk": "1.5.0",
     "gitbook-cli": "^2.3.2",
     "vuepress": "^1.9.7",
-    "vuepress-plugin-nuggets-style-copy": "^1.0.3"
+    "vuepress-plugin-code-copy": "^1.0.6"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
-  },
-  "dependencies": {
-    "gitalk": "1.5.0"
   }
 }

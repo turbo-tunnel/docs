@@ -33,12 +33,15 @@ module.exports = {
     })();
     `
   ]],
+  markdown: {
+    lineNumbers: true
+  },
   plugins: [
-    ["vuepress-plugin-nuggets-style-copy", {
-      copyText: "复制代码",
-      tip: {
-        content: "复制成功"
-      }
+    ["vuepress-plugin-code-copy", {
+      color: '#999999',
+      align: 'top',
+      staticIcon: true,
+      successText: "复制成功",
     }]
   ]
 }

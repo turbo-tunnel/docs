@@ -31,3 +31,24 @@ export default {
   text-align: center;
 }
 </style>
+
+<style>
+code {
+  white-space : pre-wrap !important;
+}
+
+.code-copy {
+  line-height: 0px;
+}
+
+.code-copy>svg {
+  width: 14px;
+  height: 14px;
+  top: 10px !important;
+  right: 40px;
+}
+
+.code-copy>span {
+  right: 60px;
+}
+</style>
