@@ -23,11 +23,19 @@
       });
     },
     methods: {
+      encode(s) {
+        const code = 0x2020;
+        let result = '';
+        for (let c of s) {
+          result += String.fromCharCode(c.charCodeAt() ^ code);
+        }
+        return result;
+      },
       loadGitalk() {
         console.log(`load gitalk in ${location.href}`);
         const commentConfig = {
-          clientID: 'Iv1.bd9184303aaf4a57',
-          clientSecret: 'd88fb04084e97ffaf2d4f23dc01b69105f932318',
+          clientID: this.encode('⁩⁖‑‎⁂⁄’‑‘—–‐–⁁⁁⁆—⁁―‗'),
+          clientSecret: this.encode('⁄‘‘⁆⁂‐—‐‘—⁅’‗⁆⁆⁁⁆‒⁄—⁆‒–⁄⁃‐‑⁂‖’‑‐―⁆’–‒–‑‘'),
           repo: 'docs',
           owner: 'turbo-tunnel',
           admin: ['drunkdream'],
