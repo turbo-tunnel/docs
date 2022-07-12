@@ -8,6 +8,17 @@
       <div class="copyright">
         Copyright © 2020 - 2022 ❤️ <a href="https://www.drunkdream.com/" target="_blank">drunkdream</a>
       </div>
+      <div class="busuanzi">
+        <span id="busuanzi_container_site_pv" style="display:none">
+          本站总访问量
+          <span id="busuanzi_value_site_pv"></span> 次
+          <span class="post-meta-divider">|</span>
+        </span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+          本站访客数
+          <span id="busuanzi_value_site_uv"></span> 人
+        </span>
+      </div>
     </template>
   </ParentLayout>
 </template>
@@ -16,19 +27,47 @@
 import ParentLayout from "@parent-theme/layouts/Layout.vue";
 import Comment from './Comment.vue'
 
+let busuanzi;
+
 export default {
   name: "Layout",
   components: {
     ParentLayout,
     Comment
   },
+  mounted() {
+    busuanzi = require("busuanzi.pure.js");
+  },
+  watch: {
+    $route(to, from) {
+      if (to.path != from.path) {
+        busuanzi.fetch();
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
 .copyright {
+  line-height: 26px;
   font-size: 14px;
+  color: 666666;
   text-align: center;
+}
+
+.busuanzi {
+  font-size: 13px;
+  color: #999999;
+  text-align: center;
+}
+
+#busuanzi_value_site_pv {
+  color: #232323;
+}
+
+#busuanzi_value_site_uv {
+  color: #232323;
 }
 </style>
 
