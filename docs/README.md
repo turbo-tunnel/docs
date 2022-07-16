@@ -8,10 +8,45 @@
 ## 安装方法
 
 ```bash
-$ python3 -m pip install turbo-tunnel
+python3 -m pip install turbo-tunnel
 ```
 
 使用`turbo-tunnel`命令测试安装是否成功。如果提示没有找到程序，可以使用`python3 -m turbo_tunnel`来执行命令。
+
+```bash
+turbo-tunnel
+
+ _____            _          _____                        _
+/__   \_   _ _ __| |__   ___/__   \_   _ _ __  _ __   ___| |
+  / /\/ | | | '__| '_ \ / _ \ / /\/ | | | '_ \| '_ \ / _ \ |
+ / /  | |_| | |  | |_) | (_) / /  | |_| | | | | | | |  __/ |
+ \/    \__,_|_|  |_.__/ \___/\/    \__,_|_| |_|_| |_|\___|_|
+
+usage: turbo-tunnel [-h] [-c CONFIG] [-l LISTEN] [-t TUNNEL]
+                    [--log-level {verbose,debug,info,warn,error}]
+                    [--log-file LOG_FILE] [--retry RETRY] [--auto-reload] [-d]
+                    [-p PLUGIN] [-V]
+
+TurboTunnel cmdline tool v0.16.2
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CONFIG, --config CONFIG
+                        config yaml file path
+  -l LISTEN, --listen LISTEN
+                        listen url
+  -t TUNNEL, --tunnel TUNNEL
+                        tunnel url
+  --log-level {verbose,debug,info,warn,error}
+                        log level, default is info
+  --log-file LOG_FILE   log file save path
+  --retry RETRY         retry connect count
+  --auto-reload         auto reload config file
+  -d, --daemon          run as daemon
+  -p PLUGIN, --plugin PLUGIN
+                        load plugin
+  -V, --version         show current version
+```
 
 ## 基本功能
 
