@@ -6,7 +6,7 @@
     <template #page-bottom>
       <Comment></Comment>
       <div class="copyright">
-        Copyright © 2020 - 2022 ❤️ <a href="https://www.drunkdream.com/" target="_blank">drunkdream</a>
+        Copyright © 2020 - 2023 ❤️ <a href="https://www.drunkdream.com/" target="_blank">drunkdream</a>
       </div>
       <div class="busuanzi">
         <span id="busuanzi_container_site_pv" style="display:none">
