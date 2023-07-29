@@ -4,7 +4,9 @@
 
 提供WebSocket隧道服务端和客户端能力。
 
-## WebSocket隧道服务端
+## 代理模式
+
+### WebSocket隧道服务端
 
 ```bash
 $ turbo-tunnel -l ws://username:password@127.0.0.1/{addr}/{port}
@@ -18,13 +20,29 @@ $ turbo-tunnel -l ws://username:password@127.0.0.1/{addr}/{port}
 
 这里可以根据使用者的需要改成不同的格式，例如：`/proxy-{addr}-{port}`或`/proxy?addr={addr}&port={port}`。但是，这里设置的格式需要与客户端指定的url格式保持一致。
 
-## WebSocket隧道客户端
+### WebSocket隧道客户端
 
 ```bash
 $ turbo-tunnel -l http://:8080/ -t ws://username:password@127.0.0.1/{addr}/{port}
 ```
 
 该命令会创建一个HTTPS代理服务端，并通过WebSocket隧道`ws://username:password@127.0.0.1/{addr}/{port}`转发所有流量。
+
+## 端口转发模式
+
+### WebSocket服务端
+
+```bash
+$ turbo-tunnel -l ws://username:password@proxy.com:8080/forward-path -t tcp://10.0.0.1:8080
+```
+
+### WebSocket客户端
+
+```bash
+$ turbo-tunnel -t tcp://127.0.0.1:8080 -t ws://username:password@proxy.com:8080/forward-path
+```
+
+这样可以把远程网络中的`10.0.0.1:8080`服务映射到本地的`8080`端口，这种方式与nginx反代类似，但优点是可以映射任意TCP服务，而不仅仅是HTTP服务。
 
 ## 使用WSS协议
 
